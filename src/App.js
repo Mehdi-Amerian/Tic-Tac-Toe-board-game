@@ -98,5 +98,26 @@ export default function Game() {
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
   }
+// This function calls the 'setCurrentMove' function to update the currentMove state 
+//variable with the provided nextMove.
+  function jumpTo(nextMove) {
+    setCurrentMove(nextMove);
+  }
+//A constant variable 'moves' is declared. It uses the map function to iterate over
+// each element (represented by squares) in the history array.
+  const moves = history.map((squares, move) => {
+    let description;
+    if (move > 0) {
+      description = 'Go to move #' + move;
+    } else {
+      description = 'Go to game start';
+    }
+    return (
+      <li key={move}>
+        <button onClick={() => jumpTo(move)}>{description}</button>
+      </li>
+    );
+  });
+
  
 }
