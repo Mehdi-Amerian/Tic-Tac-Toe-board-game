@@ -12,6 +12,34 @@ function Square({ value, onSquareClick }) {
   );
 }
 
+function calculateWinner(squares) {
+  //An array lines containing arrays, where each inner array represents the indices of three squares
+  //that form a winning line on the Tic Tac Toe board.
+  const lines = [
+    //Horizontal wins
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    //Vertical wins
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    //Diagonal wins
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  //A loop that iterates through each winning line in the lines array.
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  //Returns null when no winning combination is found
+  return null;
+}
+
+
 // Board component representing the game board
 //xIsNext: a boolean value that represents whether it is the X player's turn
 //squares: array of square values on the game board ('X','O', or 'null')
