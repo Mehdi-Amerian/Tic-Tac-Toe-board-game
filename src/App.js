@@ -89,5 +89,14 @@ export default function Game() {
   //Creates a variable 'currentSquares' that represents the state of the game board at the current move
   //Retrieves the array of squares from the 'history' array based on the 'currentMove' index
   const currentSquares = history[currentMove];
+   // Function to handle a play (updating the game state)
+   function handlePlay(nextSquares) {
+    // Create a new history array with the updated squares
+    const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+    
+    // Update state variables with the new history and current move
+    setHistory(nextHistory);
+    setCurrentMove(nextHistory.length - 1);
+  }
  
 }
