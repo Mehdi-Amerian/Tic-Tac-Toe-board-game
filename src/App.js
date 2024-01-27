@@ -75,3 +75,19 @@ function Board({ xIsNext, squares, onPlay }) {
     </>
   );
 }
+
+// Game component representing the overall game
+export default function Game() {
+  // State variables using the 'useState' hook
+  //'history' is initialized with an array containing a single element:
+  // an array of 9 null values, representing the initial state of the game board
+  const [history, setHistory] = useState([Array(9).fill(null)]);
+  //'currentMove' is initialized with the value 0 and represents the index of the current move in the game history
+  const [currentMove, setCurrentMove] = useState(0);
+  //Calculates the value of 'xIsNext' based on whether the 'currentMove' is an even number, which determines whether it is X player's turn
+  const xIsNext = currentMove % 2 === 0;
+  //Creates a variable 'currentSquares' that represents the state of the game board at the current move
+  //Retrieves the array of squares from the 'history' array based on the 'currentMove' index
+  const currentSquares = history[currentMove];
+ 
+}
